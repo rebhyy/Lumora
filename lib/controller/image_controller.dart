@@ -45,7 +45,6 @@ class ImageController extends GetxController {
 
   void downloadImage() async {
     try {
-      //To show loading
       MyDialog.showLoadingDialog();
 
       log('url: $url');

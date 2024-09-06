@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:io'; // Add this import
+import 'dart:io';
 import 'dart:developer';
 
-import 'package:http/http.dart' as http; // Use 'as http' to avoid confusion
+import 'package:http/http.dart' as http;
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:translator_plus/translator_plus.dart';
 
