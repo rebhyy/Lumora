@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'dart:async'; // Import Timer class
 
 import '../helper/ad_helper.dart';
 import '../helper/global.dart';
@@ -16,14 +17,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // final _isDarkMode = Pref.isDarkMode.obs;
-  final _isDarkMode = Get.isDarkMode.obs; //bug fix
+  final _isDarkMode = Get.isDarkMode.obs;
+  bool _showAd = true; // Variable to track ad visibility
 
   @override
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     Pref.showOnboarding = false;
+
+    // Start a timer to hide the ad after 5 seconds
+    Timer(const Duration(seconds: 5), () {
+      setState(() {
+        _showAd = false; // Hide the ad after 5 seconds
+      });
+    });
   }
 
   @override
@@ -31,17 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
     // initializing device size
     mq = MediaQuery.sizeOf(context);
 
-    // sample api call
-    // APIs.getAnswer('hii');
-
     return Scaffold(
-      // AppBar with futuristic feel
       appBar: AppBar(
         title: const Text(appName),
-        backgroundColor: Colors.black.withOpacity(0.8),
-        elevation: 10,
-        shadowColor: Colors.cyanAccent
-            .withOpacity(0.5), // Glow effect for futuristic feel
         actions: [
           IconButton(
             padding: const EdgeInsets.only(right: 10),
@@ -57,33 +57,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? Icons.brightness_2_rounded
                     : Icons.brightness_5_rounded,
                 size: 26,
-                color: Colors.cyanAccent, // Futuristic cyan glow for icon
               ),
             ),
           ),
         ],
       ),
 
-      // Bottom navigation bar with futuristic ad placeholder
-      bottomNavigationBar: AdHelper.nativeBannerAd(),
+      // Show the ad only if _showAd is true
+      bottomNavigationBar: _showAd ? AdHelper.nativeBannerAd() : null,
 
-      // Main body of the screen with futuristic design
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: RadialGradient(
-            center: Alignment.center,
-            radius: 1.5,
-            colors: [
-              Colors.black.withOpacity(0.9),
-              Colors.blueGrey.withOpacity(0.8),
-            ], // Futuristic dark background
-          ),
-        ),
-        child: ListView(
-          padding: EdgeInsets.symmetric(
-              horizontal: mq.width * .04, vertical: mq.height * .015),
-          children: HomeType.values.map((e) => HomeCard(homeType: e)).toList(),
-        ),
+      // Main body of the screen
+      body: ListView(
+        padding: EdgeInsets.symmetric(
+            horizontal: mq.width * .04, vertical: mq.height * .015),
+        children: HomeType.values.map((e) => HomeCard(homeType: e)).toList(),
       ),
     );
   }
