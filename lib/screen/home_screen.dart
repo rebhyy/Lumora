@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Pref.showOnboarding = false;
 
     // Start a timer to hide the ad after 5 seconds
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 3), () {
       setState(() {
         _showAd = false; // Hide the ad after 5 seconds
       });
