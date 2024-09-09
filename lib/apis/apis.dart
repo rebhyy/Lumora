@@ -51,8 +51,7 @@ class APIs {
         //headers
         headers: {
           HttpHeaders.contentTypeHeader: 'application/json',
-          HttpHeaders.authorizationHeader:
-              'Bearer $apiKey' // Ensure correct usage
+          HttpHeaders.authorizationHeader: 'Bearer $apiKey'
         },
 
         //body

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'dart:async'; // Import Timer class
+import 'dart:async'; 
 
 import '../helper/ad_helper.dart';
 import '../helper/global.dart';
@@ -18,25 +18,21 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _isDarkMode = Get.isDarkMode.obs;
-  bool _showAd = true; // Variable to track ad visibility
-
+  bool _showAd = true; 
   @override
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     Pref.showOnboarding = false;
-
-    // Start a timer to hide the ad after 5 seconds
     Timer(const Duration(seconds: 3), () {
       setState(() {
-        _showAd = false; // Hide the ad after 5 seconds
+        _showAd = false; 
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // initializing device size
     mq = MediaQuery.sizeOf(context);
 
     return Scaffold(
@@ -62,11 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-
-      // Show the ad only if _showAd is true
       bottomNavigationBar: _showAd ? AdHelper.nativeBannerAd() : null,
-
-      // Main body of the screen
       body: ListView(
         padding: EdgeInsets.symmetric(
             horizontal: mq.width * .04, vertical: mq.height * .015),

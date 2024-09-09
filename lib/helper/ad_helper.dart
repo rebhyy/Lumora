@@ -10,7 +10,7 @@ class AdHelper {
   static void init() {
     EasyAudienceNetwork.init(
       testMode:
-          true, // for testing purpose but comment it before making the app live
+          true, 
     );
   }
 

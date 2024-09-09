@@ -53,8 +53,6 @@ class OnboardingScreen extends StatelessWidget {
                     fontWeight: FontWeight.w900,
                     letterSpacing: .5),
               ),
-
-              //for adding some space
               SizedBox(height: mq.height * .015),
 
               //subtitle
