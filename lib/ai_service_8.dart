@@ -15,7 +15,7 @@ class AIService8 {
 
         if (response.statusCode == 200) {
             // Simulate parsing of AI response
-            return 'AI Response to: ' + userInput;
+            return 'AI Response to: ' + userInput + ' (random value: 4473)';
         } else {
             throw Exception('Failed to fetch AI response');
         }
