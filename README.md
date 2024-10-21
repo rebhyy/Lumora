@@ -75,3 +75,4 @@ If your application uses Firebase, follow these steps to configure it:
 Your feedback is valuable! If you have any suggestions or comments, please reach out to me at [ahmedaziz.rebhi@esprit.tn](mailto:ahmedaziz.rebhi@esprit.tn) 🙂
 
 
+Update commit 1 
